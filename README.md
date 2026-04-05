@@ -1,4 +1,8 @@
-# SurrealQL grammar
+# SurrealQL Validate
+
+An unofficial fork of the SurrealQL VSCode extension with validation features added.
+
+---
 
 SurrealQL is the SQL-like language used by [SurrealDB](https://surrealdb.com). This repository holds its grammar definition, implementing the textmate-grammar specification.
 

@@ -1,0 +1,2 @@
+patchedDependencies:
+  '@surrealdb/ql-wasm': patches/@surrealdb__ql-wasm.patch

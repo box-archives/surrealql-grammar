@@ -3,5 +3,10 @@
 .vscode-test/**
 examples/**
 raw/**
+src/**
+patches/**
+tsconfig.json
 .gitattributes
 .gitignore
+pnpm-lock.yaml
+pnpm-workspace.yaml

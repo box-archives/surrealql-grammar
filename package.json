@@ -1,29 +1,57 @@
 {
-	"name": "surrealql",
-	"displayName": "SurrealQL",
-	"description": "Syntax highlighting and snippets for SurrealQL, the query language for SurrealDB",
-	"version": "0.3.0",
-	"publisher": "surrealdb",
+	"name": "surrealql-validate",
+	"displayName": "SurrealQL Validate",
+	"description": "Syntax highlighting, validation, linting and snippets for SurrealQL, the query language for SurrealDB",
+	"version": "0.4.0",
+	"publisher": "hexzii",
 	"icon": "./icon.png",
+	"type": "module",
+	"main": "./dist/extension.js",
 	"author": {
-		"name": "SurrealDB",
-		"url": "https://surrealdb.com"
+		"name": "hexzii",
+		"url": "https://github.com/hexadecimal233"
 	},
-	"homepage": "https://github.com/surrealdb/surrealql-grammar",
+	"homepage": "https://github.com/hexadecimal233/surrealql-grammar",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/surrealdb/surrealql-grammar.git"
+		"url": "https://github.com/hexadecimal233/surrealql-grammar.git"
 	},
 	"engines": {
 		"vscode": "^1.77.0"
 	},
-	"categories": ["Programming Languages", "Snippets"],
+	"categories": [
+		"Programming Languages",
+		"Snippets"
+	],
 	"contributes": {
+		"commands": [
+			{
+				"command": "surrealql.formatDocument",
+				"title": "Format SurrealQL Document",
+				"category": "SurrealQL"
+			}
+		],
+		"configuration": {
+			"title": "SurrealQL",
+			"properties": {
+				"surrealql.format.pretty": {
+					"type": "boolean",
+					"default": true,
+					"description": "Enable pretty formatting for SurrealQL"
+				}
+			}
+		},
 		"languages": [
 			{
 				"id": "surrealql",
-				"aliases": ["SurrealQL", "surrealql"],
-				"extensions": [".surql", ".surrealql"],
+				"aliases": [
+					"SurrealQL",
+					"surrealql"
+				],
+				"extensions": [
+					".surql",
+					".surrealql"
+				],
 				"configuration": "./language-configuration.json",
 				"icon": {
 					"light": "./icon.png",
@@ -59,7 +87,10 @@
 			{
 				"scopeName": "markdown.surrealql.codeblock",
 				"path": "./syntaxes/surrealql-markdown.tmLanguage.json",
-				"injectTo": ["text.html.markdown", "source.mdx"],
+				"injectTo": [
+					"text.html.markdown",
+					"source.mdx"
+				],
 				"embeddedLanguages": {
 					"meta.embedded.block.surrealql": "surrealql"
 				}
@@ -71,5 +102,24 @@
 				"path": "./snippets.json"
 			}
 		]
+	},
+	"dependencies": {
+		"@surrealdb/ql-wasm": "^0.3.1"
+	},
+	"devDependencies": {
+		"@types/node": "^25.5.2",
+		"@types/vscode": "^1.77.0",
+		"@vscode/vsce": "^3.7.1",
+		"esbuild": "^0.28.0",
+		"esbuild-plugin-copy": "^2.1.1",
+		"typescript": "^6.0.2"
+	},
+	"scripts": {
+		"bundle": "node build.js",
+		"bundle:prod": "node build.js --minify",
+		"vscode:prepublish": "pnpm run bundle:prod",
+		"package": "vsce package --no-dependencies",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./"
 	}
 }
