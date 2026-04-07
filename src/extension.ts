@@ -1,5 +1,6 @@
 import * as vscode from "vscode";
 import { SurrealQL } from "@surrealdb/ql-wasm";
+import { completionProvider } from "./completion.js";
 
 let diagnosticCollection: vscode.DiagnosticCollection;
 
@@ -64,6 +65,8 @@ export async function activate(context: vscode.ExtensionContext) {
     );
 
     context.subscriptions.push(formatCommand);
+
+    context.subscriptions.push(completionProvider); // TODO: add completion provider
 }
 
 function formatSurql(text: string): string {
