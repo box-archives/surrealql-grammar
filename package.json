@@ -2,7 +2,7 @@
 	"name": "surrealql-validate",
 	"displayName": "SurrealQL Validate",
 	"description": "Syntax highlighting, validation, linting and snippets for SurrealQL, the query language for SurrealDB",
-	"version": "0.4.0",
+	"version": "0.4.1",
 	"publisher": "hexzii",
 	"icon": "./icon.png",
 	"type": "module",

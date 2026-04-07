@@ -1,4 +1,5 @@
-export const keywords = ["ACCESS",
+export const keywords = [
+    "ACCESS",
     "ALGORITHM",
     "ALL",
     "ALTER",
